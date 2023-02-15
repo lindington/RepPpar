@@ -2,8 +2,12 @@
 
 The yamlfile has to be in the following format: 
 
-> The indents are extremely important
-> Wrong indentation can lead to wrong identification of individuals, or populations being identified as individuals
+---
+**NOTE**
+
+The indents are extremely important
+Wrong indentation can lead to wrong identification of individuals, or populations being identified as individuals
+---
 
 ```yaml
   # -*- mode: Yaml; -*-
