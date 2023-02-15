@@ -4,11 +4,14 @@
 *.FullPaleoPipeline*
 00.input/bam[[:upper:]]*
 01.paleomix/[[:upper:]]*
-!01.paleomix/[[:upper:]].md
+!01.paleomix/[[:upper:]]EADME.md
 
 #index and bin files
 *idx
 *bin
+
+##temp files & folders
+temp*
 
 #slurm output files
 *.out
@@ -25,6 +28,9 @@
 
 ##wrong number individual analyses
 *220*
+
+##archived analyses
+old*
 
 ## output files and directories
 *.ml
