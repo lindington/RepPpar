@@ -11,8 +11,8 @@
 *bin
 
 ##temp files & folders
-**/temp*
-**/**/temp*
+**/temp/
+**/**/temp/
 
 #slurm output files
 *.out
