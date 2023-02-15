@@ -1,31 +1,29 @@
 # target/capture including the new samples I sent for sequencing in dec 2021 -> data from 2022
 
 I contributed to the following components of this project: 
-(Assembly)[/01.paleomix/]
-(PCA)[/04.pca]
-(NGSadmix)[/05.ngsadmix/]
-(Fst)[/08.fst/]
-(Heterozygosity)[/09.hz/]
-(Pi, Theta, and Tajima's D)[/10.pi_theta_taj/]
-(Geographic Clines)[/11.hzar/]
-(Dxy)[/12.dxy/]
-(Demographic Analysis)[/13.dadi/]
-(Genomic clines)[/14.gghybrid]
+- [Assembly](/01.paleomix/)
+- [PCA](/04.pca)
+- [NGSadmix](/05.ngsadmix/)
+- [Fst](/08.fst/)
+- [Heterozygosity](/09.hz/)
+- [Pi, Theta, and Tajima's D](/10.pi_theta_taj/)
+- [Geographic Clines](/11.hzar/)
+- [Dxy](/12.dxy/)
+- [Demographic Analysis](/13.dadi/)
+- [Genomic clines](/14.gghybrid)
 
 > **NOTE**: MUL414 has to be reassigned to SOQ414 throughout the analysis! (shouldn't rename bamfiles)
 
 ## Assembly
-### (Paleomix)[/01.paleomix/]
+#### Paleomix
 
-I used the (BAM Pipeline)[https://paleomix.readthedocs.io/en/stable/bam_pipeline/index.html] from Paleomix (Schubert et al., 2014) to create ``.bam`` files (compressed binary version of a SAM file, i.e. text-based format originally for storing biological sequences aligned to a reference sequence), on the basis of enriques scripts. See the relevant README in (01.paleomix)[/01.paleomix/README.md].
+I used the [BAM Pipeline](https://paleomix.readthedocs.io/en/stable/bam_pipeline/index.html) from Paleomix (Schubert et al., 2014) to create ``.bam`` files (compressed binary version of a SAM file, i.e. text-based format originally for storing biological sequences aligned to a reference sequence), on the basis of enriques scripts. See the relevant files in [01.paleomix](/01.paleomix/README.md).
 
-### (Depth)[/02.depth/]
+#### Depth
 
-### raw reads per individual
+I calculated depth and coverage. See the relevant files in [02.depth](02.depth/).
 
-i extracted the number of raw reads per individual from the summary files using `grep -r 'seq_retained_reads' ./*.summary >> ../../capture/paleo_summary.txt`
-
-## (PCA)[/04.pca/] and (NGSadmix)[/05.ngsadmix/]
+## PCA and NGSadmix
 
 I started doing population structure analyses using the full dataset including a geographical "outgroup" (bamlist_out.txt). To do any analysis in angsd, I needed a bamlist (`.txt` files containing paths to relevant bamfiles), which i made using `readlink -f ../01.paleomix/*bam > ../00.input/bamlist122.txt`. 
 
@@ -60,7 +58,7 @@ timestamp=$(printf "%d:%02d:%02d" $hrs $min $sec)
 echo "Job ended at $(date). Took $timestamp hours:minutes:seconds to complete."
 ```
 
-### PCA 
+#### PCA 
 
 To make a PCA, I unzipped the `.geno.gz` file using `gzip -d .geno` and counted the number of variable sites using `zcat ../beagle/01.output/beagle_bait.mafs.gz | tail -n+2 | wc -l`. There are 371391 variable sites.
 
