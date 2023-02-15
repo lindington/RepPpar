@@ -1,0 +1,32 @@
+#bamfiles, bed files, individual bamlists and paleomix big files
+*.bam
+*.bed
+*.FullPaleoPipeline*
+00.input/bam[[:upper:]]*
+01.paleomix/[[:upper:]]*
+
+#index and bin files
+*idx
+*bin
+
+#slurm output files
+*.out
+
+#depth output files
+02.depth/angsd
+02.depth/bedtools/01.output
+
+##big files
+*mafs.gz
+*geno.gz
+*beagle.gz
+*saf.gz
+
+##wrong number individual analyses
+*220*
+
+## output files and directories
+*.ml
+*fst.gz
+**/01.output/
+**/**/01.output/
