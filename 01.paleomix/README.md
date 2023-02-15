@@ -3,7 +3,7 @@
 The yamlfile has to be in the following format: 
 
 ---
-**NOTE**
+> **NOTE**
 
 >The indents are extremely important !
 >Wrong indentation can lead to wrong identification of individuals, or populations being identified as individuals
