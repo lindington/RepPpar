@@ -1,0 +1,2 @@
+10:27:04 INFO Opening './capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/paired.bam'
+Processed 1,000,000 records (30.96%) in 00:00:10s, est. 00:00:22s left. Last 1,000,000 records in 00:00:10s, now at chr1: 25,862,179

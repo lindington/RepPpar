@@ -1,0 +1,11 @@
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI1001.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI1002.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI1004.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI989.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI992.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI993.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI994.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI996.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI997.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/01.paleomix/ARI998.FullPaleoPipeline.bam
+

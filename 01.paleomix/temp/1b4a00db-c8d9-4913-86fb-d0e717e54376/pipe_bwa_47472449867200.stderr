@@ -1,0 +1,6 @@
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 289 sequences (64786 bp)...
+[M::mem_process_seqs] Processed 289 reads in 0.188 CPU sec, 0.027 real sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa mem -t 8 -M /dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/TranscriptomeReference/grasshopperWolbRef.fasta ./capture_2022/reads/OTS852/OTS852/OTS852/RAPiD-Genomics_F235_LMU_158402_P001_WC07_i5-515_i7-127_S6559_L003_Rx_001.fastq.gz/reads.collapsed.truncated.gz
+[main] Real time: 0.351 sec; CPU: 0.315 sec

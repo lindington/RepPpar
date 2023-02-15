@@ -1,0 +1,13 @@
+INFO	2022-05-12 10:27:15	MarkDuplicates	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    MarkDuplicates -OUTPUT AI178.rmdup.normal.bam -METRICS_FILE AI178.rmdup.normal.metrics -VALIDATION_STRINGENCY LENIENT -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/AI178/AI178/AI178/RAPiD-Genomics_F235_LMU_158402_P002_WB01_i5-516_i7-109_S6633_L003_Rx_001.fastq.gz/singleton.bam -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/AI178/AI178/AI178/RAPiD-Genomics_F235_LMU_158402_P002_WB01_i5-516_i7-109_S6633_L003_Rx_001.fastq.gz/paired.bam -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/AI178/AI178/AI178/RAPiD-Genomics_F235_LMU_158402_P002_WB01_i5-516_i7-109_S6633_L003_Rx_001.fastq.gz/collapsedtruncated.bam -REMOVE_DUPLICATES True
+**********
+
+

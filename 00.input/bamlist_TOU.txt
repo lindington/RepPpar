@@ -1,0 +1,11 @@
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR331.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR332.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR333.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR336.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR337.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR338.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR340.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR341.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR343.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/TOUR345.FullPaleoPipeline.bam
+

@@ -1,0 +1,36 @@
+INFO	2022-05-12 10:27:04	MarkDuplicates	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    MarkDuplicates -OUTPUT TRO170.rmdup.normal.bam -METRICS_FILE TRO170.rmdup.normal.metrics -VALIDATION_STRINGENCY LENIENT -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/singleton.bam -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/paired.bam -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/collapsedtruncated.bam -REMOVE_DUPLICATES True
+**********
+
+
+10:27:05.325 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/dss/dsshome1/lxc0A/ru67vil/programs/miniconda3/envs/paleomix/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Thu May 12 10:27:05 CEST 2022] MarkDuplicates INPUT=[/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/singleton.bam, /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/paired.bam, /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/capture_2022/FullPaleoPipeline/TRO170/TRO170/TRO170/RAPiD-Genomics_F235_LMU_158402_P001_WA08_i5-515_i7-104_S6536_L003_Rx_001.fastq.gz/collapsedtruncated.bam] OUTPUT=TRO170.rmdup.normal.bam METRICS_FILE=TRO170.rmdup.normal.metrics REMOVE_DUPLICATES=true VALIDATION_STRINGENCY=LENIENT    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Thu May 12 10:27:05 CEST 2022] Executing as ru67vil@hlegr1409n03 on Linux 4.12.14-197.78-default amd64; OpenJDK 64-Bit Server VM 11.0.2+9; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+INFO	2022-05-12 10:27:05	MarkDuplicates	Start of doWork freeMemory: 2058497640; totalMemory: 2076049408; maxMemory: 4151836672
+INFO	2022-05-12 10:27:05	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2022-05-12 10:27:05	MarkDuplicates	Will retain up to 15042886 data points before spilling to disk.
+INFO	2022-05-12 10:27:13	MarkDuplicates	Read     1,000,000 records.  Elapsed time: 00:00:07s.  Time for last 1,000,000:    7s.  Last read position: chr1:25,429,936
+INFO	2022-05-12 10:27:13	MarkDuplicates	Tracking 148950 as yet unmatched pairs. 38914 records in RAM.
+[Thu May 12 10:27:15 CEST 2022] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.18 minutes.
+Runtime.totalMemory()=2076049408
+To get help, see http://broadinstitute.github.io/picard/index.html#GettingHelp
+Exception in thread "main" java.lang.IllegalStateException: Shutdown in progress
+	at java.base/java.io.DeleteOnExitHook.add(DeleteOnExitHook.java:61)
+	at java.base/java.io.File.deleteOnExit(File.java:1091)
+	at htsjdk.samtools.CoordinateSortedPairInfoMap.makeFileForSequence(CoordinateSortedPairInfoMap.java:175)
+	at htsjdk.samtools.CoordinateSortedPairInfoMap.getOutputStreamForSequence(CoordinateSortedPairInfoMap.java:180)
+	at htsjdk.samtools.CoordinateSortedPairInfoMap.put(CoordinateSortedPairInfoMap.java:164)
+	at picard.sam.markduplicates.util.DiskBasedReadEndsForMarkDuplicatesMap.put(DiskBasedReadEndsForMarkDuplicatesMap.java:65)
+	at picard.sam.markduplicates.MarkDuplicates.buildSortedReadEndLists(MarkDuplicates.java:565)
+	at picard.sam.markduplicates.MarkDuplicates.doWork(MarkDuplicates.java:258)
+	at picard.cmdline.CommandLineProgram.instanceMain(CommandLineProgram.java:308)
+	at picard.cmdline.PicardCommandLine.instanceMain(PicardCommandLine.java:103)
+	at picard.cmdline.PicardCommandLine.main(PicardCommandLine.java:113)

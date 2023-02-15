@@ -1,0 +1,3 @@
+Reading SAM file from STDIN
+Joinining subprocesses:
+[bam_fillmd] input SAM does not have header. Abort!

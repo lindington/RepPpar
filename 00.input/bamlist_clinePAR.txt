@@ -1,0 +1,15 @@
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/GAB512.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/GAB513.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/GAB514.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/GAB515.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/GAB517.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER450.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER451.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER452.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER453.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER454.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER456.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER457.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER459.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER464.FullPaleoPipeline.bam
+/dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/1.Paleomix/HER465.FullPaleoPipeline.bam

@@ -1,0 +1,14 @@
+Reading SAM file from STDIN
+Joinining subprocesses:
+  - Command finished: /dss/dsshome1/lxc0A/ru67vil/programs/miniconda3/envs/paleomix/bin/python /dss/dsshome1/lxc0A/ru67vil/programs/miniconda3/envs/paleomix/lib/python3.9/site-packages/paleomix/main.py cleanup --fasta /dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/TranscriptomeReference/grasshopperWolbRef.fasta --temp-prefix /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/temp/1b4a00db-c8d9-4913-86fb-d0e717e54376/bam_cleanup --min-quality 30 --exclude-flags 0x4 --rg-id OTS852 --rg SM:OTS852 --rg LB:OTS852 --rg PU:OTS852 --rg PL:ILLUMINA --rg PG:bwa --rg DS:/dss/dsslegfs01/pr53da/pr53da-dss-0029/RawData/capture_Rapidgenomics_2022/Fastqs/RAPiD-Genomics_F235_LMU_158402_P001_WC07_i5-515_i7-127_S6559_L003_R[12]_001.fastq.gz cleanup
+    - Return-code:    0
+  - Command finished: samtools sort -l 0 -O bam -T /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/temp/1b4a00db-c8d9-4913-86fb-d0e717e54376/bam_cleanup
+    - Return-code:    0
+[bam_fillmd1] different NM for read 'MT_A01443:203:HVGHGDSX3:3:2559:30454:1000': 20 -> 21
+[bam_fillmd1] different MD for read 'MT_A01443:203:HVGHGDSX3:3:2559:30454:1000': '21A14C10T33T3A4C7C2A0C0T5T8T0T2G6C0A1C0C1G7T6' -> '0N20A14C10T33T3A4C7C2A0C0T5T8T0T2G6C0A1C0C1G7T6'
+[bam_fillmd1] different NM for read 'MT_A01443:203:HVGHGDSX3:3:2623:6741:1016': 8 -> 9
+[bam_fillmd1] different MD for read 'MT_A01443:203:HVGHGDSX3:3:2623:6741:1016': '24A16T3^C0T31A3A8C3C21' -> '0N23A16T3^C0T31A3A8C3C21'
+[bam_fillmd1] different NM for read 'MT_A01443:203:HVGHGDSX3:3:2318:2121:1000': 7 -> 8
+[bam_fillmd1] different MD for read 'MT_A01443:203:HVGHGDSX3:3:2318:2121:1000': '38C1G11G17T16T17T7G6' -> '0N37C1G11G17T16T17T7G6'
+  - Command finished: samtools calmd -b - /dss/dsslegfs01/pr53da/pr53da-dss-0029/TranscriptomeAnalyses/TranscriptomeReference/grasshopperWolbRef.fasta
+    - Return-code:    0

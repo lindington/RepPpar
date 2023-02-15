@@ -1,0 +1,57 @@
+INFO	2022-05-11 17:15:18	ValidateSamFile	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    ValidateSamFile -I /dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/NewMappedReads.FullPaleoPipeline.bam -IGNORE MATE_NOT_FOUND -IGNORE INVALID_QUALITY_FORMAT -INDEX_VALIDATION_STRINGENCY LESS_EXHAUSTIVE
+**********
+
+
+17:15:18.492 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/dss/dsshome1/lxc0A/ru67vil/programs/miniconda3/envs/paleomix/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Wed May 11 17:15:18 CEST 2022] ValidateSamFile INPUT=/dss/dsslegfs01/pr53da/pr53da-dss-0029/capture/paleomix_new/NewMappedReads.FullPaleoPipeline.bam IGNORE=[MATE_NOT_FOUND, INVALID_QUALITY_FORMAT] INDEX_VALIDATION_STRINGENCY=LESS_EXHAUSTIVE    MODE=VERBOSE MAX_OUTPUT=100 IGNORE_WARNINGS=false VALIDATE_INDEX=true IS_BISULFITE_SEQUENCED=false MAX_OPEN_TEMP_FILES=8000 SKIP_MATE_VALIDATION=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Wed May 11 17:15:18 CEST 2022] Executing as ru67vil@hlegr1409n02 on Linux 4.12.14-197.78-default amd64; OpenJDK 64-Bit Server VM 11.0.2+9; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+WARNING	2022-05-11 17:15:18	ValidateSamFile	NM validation cannot be performed without the reference. All other validations will still occur.
+INFO	2022-05-11 17:16:15	SamFileValidator	Validated Read    10,000,000 records.  Elapsed time: 00:00:56s.  Time for last 10,000,000:   56s.  Last read position: chr1:2,488,282
+INFO	2022-05-11 17:17:14	SamFileValidator	Validated Read    20,000,000 records.  Elapsed time: 00:01:56s.  Time for last 10,000,000:   59s.  Last read position: chr1:5,111,799
+INFO	2022-05-11 17:18:12	SamFileValidator	Validated Read    30,000,000 records.  Elapsed time: 00:02:54s.  Time for last 10,000,000:   57s.  Last read position: chr1:7,924,136
+INFO	2022-05-11 17:19:14	SamFileValidator	Validated Read    40,000,000 records.  Elapsed time: 00:03:55s.  Time for last 10,000,000:   61s.  Last read position: chr1:10,799,088
+INFO	2022-05-11 17:20:12	SamFileValidator	Validated Read    50,000,000 records.  Elapsed time: 00:04:54s.  Time for last 10,000,000:   58s.  Last read position: chr1:13,463,005
+INFO	2022-05-11 17:21:12	SamFileValidator	Validated Read    60,000,000 records.  Elapsed time: 00:05:53s.  Time for last 10,000,000:   59s.  Last read position: chr1:17,366,985
+INFO	2022-05-11 17:22:08	SamFileValidator	Validated Read    70,000,000 records.  Elapsed time: 00:06:50s.  Time for last 10,000,000:   56s.  Last read position: chr1:20,922,387
+INFO	2022-05-11 17:23:08	SamFileValidator	Validated Read    80,000,000 records.  Elapsed time: 00:07:50s.  Time for last 10,000,000:   60s.  Last read position: chr1:23,251,297
+INFO	2022-05-11 17:24:11	SamFileValidator	Validated Read    90,000,000 records.  Elapsed time: 00:08:53s.  Time for last 10,000,000:   62s.  Last read position: chr1:26,429,896
+INFO	2022-05-11 17:25:10	SamFileValidator	Validated Read   100,000,000 records.  Elapsed time: 00:09:51s.  Time for last 10,000,000:   58s.  Last read position: chr1:30,176,011
+INFO	2022-05-11 17:26:41	SamFileValidator	Validated Read   110,000,000 records.  Elapsed time: 00:11:23s.  Time for last 10,000,000:   91s.  Last read position: chr1:34,029,378
+INFO	2022-05-11 17:31:51	SamFileValidator	Validated Read   120,000,000 records.  Elapsed time: 00:16:32s.  Time for last 10,000,000:  309s.  Last read position: chr1:38,370,767
+INFO	2022-05-11 17:39:03	SamFileValidator	Validated Read   130,000,000 records.  Elapsed time: 00:23:44s.  Time for last 10,000,000:  431s.  Last read position: chr1:41,922,265
+INFO	2022-05-11 17:50:36	SamFileValidator	Validated Read   140,000,000 records.  Elapsed time: 00:35:17s.  Time for last 10,000,000:  692s.  Last read position: chr1:45,319,725
+INFO	2022-05-11 18:14:01	SamFileValidator	Validated Read   150,000,000 records.  Elapsed time: 00:58:42s.  Time for last 10,000,000: 1,405s.  Last read position: chr2:36,497
+INFO	2022-05-11 18:15:07	SamFileValidator	Validated Read   160,000,000 records.  Elapsed time: 00:59:48s.  Time for last 10,000,000:   65s.  Last read position: chr2:517,594
+INFO	2022-05-11 18:16:14	SamFileValidator	Validated Read   170,000,000 records.  Elapsed time: 01:00:55s.  Time for last 10,000,000:   67s.  Last read position: chr2:1,012,566
+INFO	2022-05-11 18:19:29	SamFileValidator	Validated Read   180,000,000 records.  Elapsed time: 01:04:11s.  Time for last 10,000,000:  195s.  Last read position: chr2:1,657,970
+INFO	2022-05-11 18:24:08	SamFileValidator	Validated Read   190,000,000 records.  Elapsed time: 01:08:50s.  Time for last 10,000,000:  279s.  Last read position: chr2:2,607,151
+INFO	2022-05-11 18:31:11	SamFileValidator	Validated Read   200,000,000 records.  Elapsed time: 01:15:52s.  Time for last 10,000,000:  422s.  Last read position: chr2:3,622,981
+INFO	2022-05-11 18:43:48	SamFileValidator	Validated Read   210,000,000 records.  Elapsed time: 01:28:30s.  Time for last 10,000,000:  757s.  Last read position: chr2:4,798,941
+[Wed May 11 21:47:18 CEST 2022] picard.sam.ValidateSamFile done. Elapsed time: 272.00 minutes.
+Runtime.totalMemory()=4151836672
+To get help, see http://broadinstitute.github.io/picard/index.html#GettingHelp
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at htsjdk.samtools.TextCigarCodec.decode(TextCigarCodec.java:76)
+	at htsjdk.samtools.SAMUtils.getMateCigar(SAMUtils.java:826)
+	at htsjdk.samtools.SAMUtils.getMateCigar(SAMUtils.java:842)
+	at htsjdk.samtools.SAMUtils.getMateAlignmentBlocks(SAMUtils.java:915)
+	at htsjdk.samtools.SAMUtils.validateMateCigar(SAMUtils.java:975)
+	at htsjdk.samtools.SamFileValidator.validateCigar(SamFileValidator.java:459)
+	at htsjdk.samtools.SamFileValidator.validateMateCigar(SamFileValidator.java:453)
+	at htsjdk.samtools.SamFileValidator.validateMateFields(SamFileValidator.java:538)
+	at htsjdk.samtools.SamFileValidator.validateSamRecordsAndQualityFormat(SamFileValidator.java:316)
+	at htsjdk.samtools.SamFileValidator.validateSamFile(SamFileValidator.java:236)
+	at htsjdk.samtools.SamFileValidator.validateSamFileVerbose(SamFileValidator.java:202)
+	at picard.sam.ValidateSamFile.doWork(ValidateSamFile.java:267)
+	at picard.cmdline.CommandLineProgram.instanceMain(CommandLineProgram.java:308)
+	at picard.cmdline.PicardCommandLine.instanceMain(PicardCommandLine.java:103)
+	at picard.cmdline.PicardCommandLine.main(PicardCommandLine.java:113)
