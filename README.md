@@ -25,7 +25,7 @@ I calculated depth and coverage. See the relevant files in [02.depth](02.depth/)
 
 ## PCA and NGSadmix
 
-I started doing population structure analyses using the full dataset including a geographical "outgroup" (bamlist_out.txt). To do any analysis in angsd, I needed a bamlist (`.txt` files containing paths to relevant bamfiles), which i made using `readlink -f ../01.paleomix/*bam > ../00.input/bamlist122.txt`. 
+For the population structure analyses, I used the full dataset including a geographical "outgroup" (bamlist_out.txt). To do any analysis in angsd, I needed a bamlist (`.txt` files containing paths to relevant bamfiles), which i made using `readlink -f ../01.paleomix/*bam > ../00.input/bamlist122.txt`. 
 
 I started by making a `.geno` and a `.beagle` file with the same filters. The ``.beagle`` file will be used for [NGSadmix](#ngsadmix). I specified to retain the baited regions only used the `-sites` flag and restricted analyses to chr1 using the `-r` flag.
 
