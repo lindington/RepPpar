@@ -1,6 +1,13 @@
 # Paleomix
 
-The yamlfile has to be in the following format: 
+I installed paleomix in a conda environment following the directions on the (website)[https://paleomix.readthedocs.io/en/stable/installation.html#conda-installation]. An important step is to link the `picard.jar` file using: 
+
+```bash
+$ (paleomix) mkdir -p ~/install/jar_root/
+$ (paleomix) ln -s ~[path to conda installation]/*conda*/envs/paleomix/share/picard-*/picard.jar ~/install/jar_root/
+```
+
+Then, I made the `yaml` file. It has to be in the following format: 
 
 ---
 > **NOTE**

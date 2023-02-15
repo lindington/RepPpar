@@ -1,195 +1,33 @@
 # target/capture including the new samples I sent for sequencing in dec 2021 -> data from 2022
 
-! note MUL414 has to be reassigned to SOQ414! throughout the analysis! (shouldn't rename bamfiles)
+I contributed to the following components of this project: 
+(Assembly)[/01.paleomix/]
+(PCA)[/04.pca]
+(NGSadmix)[/05.ngsadmix/]
+(Fst)[/08.fst/]
+(Heterozygosity)[/09.hz/]
+(Pi, Theta, and Tajima's D)[/10.pi_theta_taj/]
+(Geographic Clines)[/11.hzar/]
+(Dxy)[/12.dxy/]
+(Demographic Analysis)[/13.dadi/]
+(Genomic clines)[/14.gghybrid]
 
-## Paleomix
-I used the (BAM Pipeline)[https://paleomix.readthedocs.io/en/stable/bam_pipeline/index.html] from Paleomix (Schubert et al., 2014) to create ``.bam`` (compressed binary version of a SAM file, i.e. text-based format originally for storing biological sequences aligned to a reference sequence) files, on the basis of enriques scripts.
+> **NOTE**: MUL414 has to be reassigned to SOQ414 throughout the analysis! (shouldn't rename bamfiles)
 
-I installed paleomix in a conda environment following the directions on the (website)[https://paleomix.readthedocs.io/en/stable/installation.html#conda-installation]. An important step is to link the `picard.jar` file using: 
+## Assembly
+### (Paleomix)[/01.paleomix/]
 
-```bash
-$ (paleomix) mkdir -p ~/install/jar_root/
-$ (paleomix) ln -s ~[path to conda installation]/*conda*/envs/paleomix/share/picard-*/picard.jar ~/install/jar_root/
-```
+I used the (BAM Pipeline)[https://paleomix.readthedocs.io/en/stable/bam_pipeline/index.html] from Paleomix (Schubert et al., 2014) to create ``.bam`` files (compressed binary version of a SAM file, i.e. text-based format originally for storing biological sequences aligned to a reference sequence), on the basis of enriques scripts. See the relevant README in (01.paleomix)[/01.paleomix/README.md].
 
-
-Then I made a `.yaml` file in the following format: 
-
-```yaml
-  # -*- mode: Yaml; -*-
-# Default options.
-# Can also be specific for a set of samples, libraries, and lanes,
-# by including the "Options" hierarchy at the same level as those
-# samples, libraries, or lanes below.
-Options:
-  # Sequencing platform, see SAM/BAM reference for valid values
-  Platform: Illumina
-  # Quality offset for Phred scores, either 33 (Sanger/Illumina 1.8+)
-  # or 64 (Illumina 1.3+ / 1.5+). For Bowtie2 it is also possible to
-  # specify 'Solexa', to handle reads on the Solexa scale. This is
-  # used during adapter-trimming and sequence alignment
-  QualityOffset: 33
-
-  # Settings for trimming of reads, see AdapterRemoval man-page
-  AdapterRemoval:
-     # Set and uncomment to override defaults adapter sequences
-#     --adapter1: AGATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG
-#     --adapter2: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT
-     # Some BAM pipeline defaults differ from AR defaults;
-     # To override, change these value(s):
-     --mm: 3
-     --minlength: 25
-     # Extra features enabled by default; change 'yes' to 'no' to disable
-     --collapse: yes
-     --trimns: yes
-     --trimqualities: yes
-
-  # Settings for aligners supported by the pipeline
-  Aligners:
-    # Choice of aligner software to use, either "BWA" or "Bowtie2"
-    Program: BWA
-
-    # Settings for mappings performed using BWA
-    BWA:
-      # One of "backtrack", "bwasw", or "mem"; see the BWA documentation
-      # for a description of each algorithm (defaults to 'backtrack')
-      Algorithm: mem
-      # Filter aligned reads with a mapping quality (Phred) below this value
-      MinQuality: 30
-      # Filter reads that did not map to the reference sequence
-      FilterUnmappedReads: yes
-      # May be disabled ("no") for aDNA alignments with the 'aln' algorithm.
-      # Post-mortem damage localizes to the seed region, which BWA expects to
-      # have few errors (sets "-l"). See http://pmid.us/22574660
-      UseSeed: yes
-      # Additional command-line options may be specified below. For 'backtrack' these
-      # are applied to the "bwa aln". See Bowtie2 for more examples.
-#      -n: 0.04
-
-    # Settings for mappings performed using Bowtie2
-    Bowtie2:
-      # Filter aligned reads with a mapping quality (Phred) below this value
-      MinQuality: 0
-      # Filter reads that did not map to the reference sequence
-      FilterUnmappedReads: yes
-      # Examples of how to add additional command-line options
-#      --trim5: 5
-#      --trim3: 5
-      # Note that the colon is required, even if no value is specified
-      --very-sensitive:
-      # Example of how to specify multiple values for an option
-#      --rg:
-#        - CN:SequencingCenterNameHere
-#        - DS:DescriptionOfReadGroup
-
-  # Command-line options for mapDamage; use long-form options(--length not -l):
-  mapDamage:
-    # By default, the pipeline will downsample the input to 100k hits
-    # when running mapDamage; remove to use all hits
-    --downsample: 100000
-
-  # Set to 'yes' exclude a type of trimmed reads from alignment / analysis;
-  # possible read-types reflect the output of AdapterRemoval
-  ExcludeReads:
-    # Exclude single-end reads (yes / no)?
-    Single: no
-    # Exclude non-collapsed paired-end reads (yes / no)?
-    Paired: no
-    # Exclude paired-end reads for which the mate was discarded (yes / no)?
-    Singleton: no
-    # Exclude overlapping paired-ended reads collapsed into a single sequence
-    # by AdapterRemoval (yes / no)?
-    Collapsed: no
-    # Like 'Collapsed', but only for collapsed reads truncated due to the
-    # presence of ambiguous or low quality bases at read termini (yes / no).
-    CollapsedTruncated: no
-
-  # Optional steps to perform during processing.
-  Features:
-    # If set to 'filter', PCR duplicates are removed from the output files; if set to
-    # 'mark', PCR duplicates are flagged with bit 0x400, and not removed from the
-    # output files; if set to 'no', the reads are assumed to not have been amplified.
-    PCRDuplicates: filter
-    # Set to 'no' to disable mapDamage; set to 'plots' to build basic mapDamage plots;
-    # set to 'model' to build plots and post-mortem damage models; and set to 'rescale'
-    # to build plots, models, and BAMs with rescaled quality scores. All analyses are
-    # carried out per library.
-    mapDamage: plot
-    # Generate coverage information for the final BAM and for each 'RegionsOfInterest'
-    # specified in 'Prefixes' (yes / no).
-    Coverage: yes
-    # Generate histograms of number of sites with a given read-depth, from 0 to 200,
-    # for each BAM and for each 'RegionsOfInterest' specified in 'Prefixes' (yes / no).
-    Depths: yes
-    # Generate summary table for each target (yes / no)
-    Summary: yes
-
-
-# Map of prefixes by name, each having a Path, which specifies the location of the
-# BWA/Bowtie2 index, and optional regions for which additional statistics are produced.
-Prefixes:
-  # Replace 'NAME_OF_PREFIX' with name of the prefix; this name is used in summary
-  # statistics and as part of output filenames.
-  FullPaleoPipeline:
-    # Replace 'PATH_TO_PREFIX' with the path to .fasta file containing the references
-    # against which reads are to be mapped. Using the same name as filename is strongly
-    # recommended (e.g. /path/to/Human_g1k_v37.fasta should be named 'Human_g1k_v37').
-    Path: /dss/dsslegfs01/pr53da/pr53da-dss-0029/GrassWolbGenRef/grasshopperWolbRef.fasta
-
-    # (Optional) Uncomment and replace 'PATH_TO_BEDFILE' with the path to a .bed file
-    # listing extra regions for which coverage / depth statistics should be calculated;
-    # if no names are specified for the BED records, results are named after the
-    # chromosome / contig. Replace 'NAME' with the desired name for these regions.
-#    RegionsOfInterest:
-#      NAME: PATH_TO_BEDFILE
-
-
-# Mapping targets are specified using the following structure. Replace 'NAME_OF_TARGET'
-# with the desired prefix for filenames.
-GAB512:
-  # Replace 'NAME_OF_SAMPLE' with the name of this sample.
-    # Replace 'NAME_OF_LIBRARY' with the name of this sample.  
-       # Replace 'NAME_OF_LANE' with the lane name (e.g. the barcode) and replace
-       # 'PATH_WITH_WILDCARDS' with the path to the FASTQ files to be trimmed and mapped
-       # for this lane (may include wildcards).
-  GAB512:
-    GAB512:
-      GAB512: /dss/dsslegfs01/pr53da/pr53da-dss-0029/raw_data/capture_RapidGenomics/RapidGenomics_F193_LMU_158401_P001_WA01_i5-533_i7-*_S347_L001_R{Pair}_001.fastq.gz
-GAB513:
-  GAB513:
-    GAB513:
-      GAB513: /dss/dsslegfs01/pr53da/pr53da-dss-0029/raw_data/capture_RapidGenomics/RapidGenomics_F193_LMU_158401_P001_WA02_i5-533_i7-*_S348_L001_R{Pair}_001.fastq.gz
-GAB514:
-  GAB514:
-    GAB514:
-      GAB514: /dss/dsslegfs01/pr53da/pr53da-dss-0029/raw_data/capture_RapidGenomics/RapidGenomics_F193_LMU_158401_P001_WA03_i5-533_i7-*_S349_L001_R{Pair}_001.fastq.gz
-GAB515:
-  GAB515:
-    GAB515:
-      GAB515: /dss/dsslegfs01/pr53da/pr53da-dss-0029/raw_data/capture_RapidGenomics/RapidGenomics_F193_LMU_158401_P001_WA04_i5-533_i7-*_S350_L001_R{Pair}_001.fastq.gz
-GAB517:
-  GAB517:
-    GAB517:
-      GAB517: /dss/dsslegfs01/pr53da/pr53da-dss-0029/raw_data/capture_RapidGenomics/RapidGenomics_F193_LMU_158401_P001_WA05_i5-533_i7-*_S351_L001_R{Pair}_001.fastq.gz
-HER450:
-  HER450:
-    HER450:
-      HER450: /dss/dsslegfs01/pr53da/pr53da-dss-0029/raw_data/capture_RapidGenomics/RapidGenomics_F193_LMU_158401_P001_WA06_i5-533_i7-*_S352_L001_R{Pair}_001.fastq.gz
-#etc...
-```
->!! The indents are extremely important !!
->!! Wrong indentation can lead to wrong identification of individuals, or populations being identified as individuals!!
-
-## Depth
+### (Depth)[/02.depth/]
 
 ### raw reads per individual
 
 i extracted the number of raw reads per individual from the summary files using `grep -r 'seq_retained_reads' ./*.summary >> ../../capture/paleo_summary.txt`
 
-## PCA and NGSadmix
+## (PCA)[/04.pca/] and (NGSadmix)[/05.ngsadmix/]
 
-I started with repeating population structure analyses using the full dataset including a geographical "outgroup" (bamlist_out.txt)
-To do any analysis in angsd, I needed a bamlist (`.txt` files containing paths to relevant bamfiles), which i made using `readlink -f ../01.paleomix/*bam > ../00.input/bamlist122.txt`
+I started doing population structure analyses using the full dataset including a geographical "outgroup" (bamlist_out.txt). To do any analysis in angsd, I needed a bamlist (`.txt` files containing paths to relevant bamfiles), which i made using `readlink -f ../01.paleomix/*bam > ../00.input/bamlist122.txt`. 
 
 I started by making a `.geno` and a `.beagle` file with the same filters. The ``.beagle`` file will be used for [NGSadmix](#ngsadmix). I specified to retain the baited regions only used the `-sites` flag and restricted analyses to chr1 using the `-r` flag.
 
