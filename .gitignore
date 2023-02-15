@@ -4,7 +4,7 @@
 *.FullPaleoPipeline*
 00.input/bam[[:upper:]]*
 01.paleomix/[[:upper:]]*
-!README.md
+!01.paleomix/[[:upper:]].md
 
 #index and bin files
 *idx
