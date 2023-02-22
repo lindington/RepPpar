@@ -103,25 +103,16 @@ The per gene F<sub>ST</sub> were calculated using the custom script [loopFst.pl]
 perl loopFst.pl grasshopperRef.positions [pop1pop2].fst > genefst_[pop1pop2]
 ```
 
-###  heterozygosity / fstat per region
-Based on the per individual sfs, I first summed the output from each individual sfs into one `.ml` file, using: 
+### Heterozygosity
+Based on the per individual sfs, I first summed the output from each individual sfs into one `.ml` file, using the [summing script](09.hz/sum_indSFS.sh).
 
+I plotted locally in R using the [plotting script](09.hz/hz.R).
 
-he did per site
-loop through regions with bed file
-
-## with GL repeat stats me (per region & per pop)
+## theta, dxy, taj. D (per region & per pop)
 use correct filter (da fonseca)
-pi theta, etc >100 sites per gene (2dsfs) angsd
+pi theta, etc >100 sites per gene (2dsfs) angsd 
 
-### theta, dxy, taj. D 
-
-### LD, rho
-recombination
-
-### allele freq. 
-
-## Clinal shit (1 SNP/region)
+## Clines (1 SNP/region)
 make allele frequency file with relevant pops.. 
 
 inbreeding cooefficint density ?
