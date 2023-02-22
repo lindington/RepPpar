@@ -1,17 +1,24 @@
 # Repeatability of Introgression using Target/Capture sequencing in the Pyrenean <i>Pseudochorthippus parallelus</i> hybrid zone.
 
 I contributed to the following components of this project: 
-- [Assembly](/01.paleomix/)
-- [PCA](/04.pca)
-- [NGSadmix](/05.ngsadmix/)
-- [Fst](/08.fst/)
-- [Heterozygosity](/09.hz/)
-- [Pi, Theta, and Tajima's D](/10.pi_theta_taj/)
-- [Geographic Clines](/11.hzar/)
-- [Dxy](/12.dxy/)
-- [Demographic Analysis](/13.dadi/)
-- [Genomic clines](/14.gghybrid)
-
+- Sequencing
+  - Lab things
+- Assembly
+  - [Paleomix](/01.paleomix/)
+  - [Depth](02.depth/)
+- Population Structure: 
+  - [PCA](/04.pca)
+  - [NGSadmix](/05.ngsadmix/)
+- Summary Stats
+  - [F<sub>ST</sub>](/08.fst/)
+  - [Heterozygosity](/09.hz/)
+  - [π, Wattersons's θ, and Tajima's D](/10.pi_theta_taj/)
+  - [d<sub>XY</sub>](/12.dxy/)
+- Clines
+  - [Geographic Clines](/11.hzar/)
+  - [Genomic clines](/14.gghybrid)
+- Demography
+  - [dadi](13.dadi/)
 > **NOTE**: individual MUL414 has to be reassigned to SOQ414 throughout the analysis! (shouldn't rename bamfiles)
 
 ## Assembly
@@ -24,11 +31,11 @@ I used the [BAM Pipeline](https://paleomix.readthedocs.io/en/stable/bam_pipeline
 
 I calculated depth and coverage. See the relevant files in [02.depth](02.depth/).
 
-### Depth to decide which inds to exclude 
+#### Depth to decide which inds to exclude 
 
 I used bedtools to calculate the global depth per baited region, global depth per base pair, depth per individual, and depth per individual per base pair: with the [full script](02.depth/bedtools/full_script.sh).
 
-## PCA and NGSadmix
+## Population Structure
 
 For the population structure analyses, I used the full dataset including a geographical "outgroup" (bamlist_out.txt). To do any analysis in angsd, I needed a bamlist (`.txt` files containing paths to relevant bamfiles), which i made using `readlink -f ../01.paleomix/*bam > ../00.input/bamlist122.txt`.  
 
@@ -56,16 +63,16 @@ Note that nine MUL assignments are separated by a single assignment to SOQ. This
 
 To plot the PCA components, I ran the [pca plotting script](04.04.pca/bait_pca.R) locally on my laptop, because the R packages needed aren't installed on the server. 
 
-### NGSadmix
+#### NGSadmix
 
 To analyse the population structure, I used NGSadmix as implemented in ANGSD. NGSadmix takes genotype likelihood input data and assigns individuals to previously defined number of clusters K, based on maximising Hardy-Weinberg-equilibrium. 
 
 I used the ``.beagle.gz`` file generated in [PCA](#pca) and a wrapper written by .... to specify the numbers of runs and Ks per job and submit them to slurm. I used my a version of angsd i installed on conda (v. 0.933) because other versions of angsd don't work for this.
 To plot the admixture proportions per K, I used the [ngsadmix plotting script](05.ngsadmix/ngsadmix.R) locally in R:
 
-## F<sub>ST</sub> & IBD
+## Summary Stats
 
-### SAF
+#### SAF
 I made ``.saf`` files for each pop (MUL414 reassigned to SOQ414!) by running the [per-pop saf script](06.saf/SAF_all_pop.sh) on biohpc_gen partition with: 
 - `-minInd 4` changed to 80% individuals
 - `-setMaxDepth` removed because pca not affected by it (same with and without)
@@ -83,15 +90,11 @@ GAB | HER | SOQ | TOU | ARA | POR | MUL | FOR | PAZ | LAN | ESC
 
 I also made per individual SAF-files for downstream heterozygosity calculations using the [per-ind-saf script](06.saf/SAF_all_ind.sh).
 
-### SFS
+#### SFS
 From the per population SAF files, I made one dimenional site frequency spectra ([1dSFS construction](07.sfs/1DSFS_all.sh) ) and two dimensional site frequency spectra ([2dSFS construction](07.sfs/2DSFS_all.sh)) using realSFS as implemented in ANGSD using the following scripts. I also made per individual site frequency spectra ([IndSFS construction](07.sfs/indSFS_all.sh) ) for downstream analysis of heterozygosity.
 
-### F<sub>ST</sub>
-I used the 2dSFS to calculate pairwise F<sub>ST</sub> between all populations. I wrote the [Global F<sub>ST</sub> script](08.fst/FST_global_all.sh) to itirate the analysis over all combinations. 
-
-Then i compiled the global weighted and unweighted FST values into one file using the [compiling script](08.fst/compile_FST_global_all.sh)
-
-I plotted the global F<sub>ST</sub> in Isolation by Distance models locally in R using the [global fst plotting script](08.fst/fst.R)
+#### F<sub>ST</sub>
+I used the 2dSFS to calculate pairwise F<sub>ST</sub> between all populations. I wrote the [Global F<sub>ST</sub> script](08.fst/FST_global_all.sh) to itirate the analysis over all combinations. Then i compiled the global weighted and unweighted FST values into one file using the [compiling script](08.fst/compile_FST_global_all.sh) I plotted the global F<sub>ST</sub> in Isolation by Distance models locally in R using the [global fst plotting script](08.fst/fst.R)
 
 Then i moved on to per site F<sub>ST</sub> calculations: 
 ```bash
@@ -104,27 +107,37 @@ perl loopFst.pl grasshopperRef.positions [pop1pop2].fst > genefst_[pop1pop2]
 ```
 I plotted the per gene fst using the [gene fest plotting script](08.fst/plot_gene_fst.R)
 
-## Heterozygosity
+#### Heterozygosity
 Based on the per individual sfs, I summed the output from each individual sfs into one `.ml` file, using the [summing script](09.hz/sum_indSFS.sh).
 
 I plotted locally in R using the [hz plotting script](09.hz/hz.R).
 
-## Pi, Theta, Tajima's D (per region & per pop)
-I calculated per site Watterson's theta, Tajima's D, and pi based on the 1DSFS using realSFS in angsd. I used the [site theta script](10.pi_theta_taj/site_thetas_all.sh) to calculate per site stats, then the [log theta script](10.pi_theta_taj/logthetas_all.sh) to extract the relevant output and then summed the sites into genes using the [gene thetas script](10.pi_theta_taj/gene_thetas.R) in R on the server by submitting it with the [gene theta bash script](10.pi_theta_taj/gene_thetas.sh). 
+#### Pi, Watterson's θ, Tajima's D (per region & per pop)
+I calculated per site Watterson's θ, Tajima's D, and pi based on the 1DSFS using realSFS in angsd. I used the [site theta script](10.pi_theta_taj/site_thetas_all.sh) to calculate per site stats, then the [log theta script](10.pi_theta_taj/logthetas_all.sh) to extract the relevant output and then summed the sites into genes using the [gene thetas script](10.pi_theta_taj/gene_thetas.R) in R on the server by submitting it with the [gene theta bash script](10.pi_theta_taj/gene_thetas.sh). 
 
 The output file contains many correlated summary stats. I extracted the relevant ones and plotted locally in R using my [sumstat plotting script](10.pi_theta_taj/plot_gene_theta.R).
 
-## Geographic Clines 
-I made allele frequency files using 
+#### d<sub>XY</sub>
+I first calculated per site d<sub>XY</sub> using the the [site dxy script](12.dxy/calcDxy.R) written by Joshua Penalba, then summed into genes using [gene dxy script](12.dxy/gene_dxys.R) written by me and Alexander Hausmann. 
 
-inbreeding cooefficint density ?
-capturing introns
+I plotted with the [d<sub>XY</sub> plotting script](12.plots.R).
 
-maxdepth
-mindpth
-restrict to new target coordinates of file
+## Clines
+#### Geographic Clines
 
-+mt wol
+I made allele frequency files using many conversions to get from angsd compatible files to vcftools compatible files. The pipeline can be found in my [processing script](11.hzar/processing.sh).
+
+I selected the SNPs using ... I ran hzar locally in R using my [geo clines script](11.hzar/geo_clines.R). I extracted relevant information using the [cline summary script](11.hzar/cline_summary.R) and plotted in python using [cline plotting script](11.hzar/clineplot.py) and calculated stats using [cline stats script](11.hzar/clinestats.py).
+
+#### Genomic Clines
+Richard Bailey and Maria conducted this Analysis, but i prepared the files.
+
+I also made the Hybrid index geographic cline. I did this using the [hybrid index cline script](11.hzar/hicline.R).
+
+## Demographic Analyses
+
+#### dadi
+Dörte Neumeister conducted this analysis but i prepared the files. 
 
 ## References 
 Schubert M, Ermini L, Sarkissian CD, Jónsson H, Ginolhac A, Schaefer R, Martin MD, Fernández R, Kircher M, McCue M, Willerslev E, and Orlando L. "Characterization of ancient and modern genomes by SNP detection and phylogenomic and metagenomic analysis using PALEOMIX". Nat Protoc. 2014 May;9(5):1056-82. doi: 10.1038/nprot.2014.063. Epub 2014 Apr 10. PubMed PMID: 24722405.
