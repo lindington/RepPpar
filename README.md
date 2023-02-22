@@ -54,14 +54,14 @@ Rscript -e 'write.table(cbind(seq(1,50),rep(1,50),c(rep("ARA",10),rep("ESC",5),r
 These assignments have to follow the order of the ``.bam`` files in the bamlist used to make the ``.beagle`` file.
 Note that nine MUL assignments are separated by a single assignment to SOQ. This is because the bamfile of a mislabeled individual from Soques was still grouped with Mulas individuals. 
 
-To plot the PCA components, I ran the [plotting script](04.04.pca/bait_pca.R) locally on my laptop, because the R packages needed aren't installed on the server. 
+To plot the PCA components, I ran the [pca plotting script](04.04.pca/bait_pca.R) locally on my laptop, because the R packages needed aren't installed on the server. 
 
 ### NGSadmix
 
 To analyse the population structure, I used NGSadmix as implemented in ANGSD. NGSadmix takes genotype likelihood input data and assigns individuals to previously defined number of clusters K, based on maximising Hardy-Weinberg-equilibrium. 
 
 I used the ``.beagle.gz`` file generated in [PCA](#pca) and a wrapper written by .... to specify the numbers of runs and Ks per job and submit them to slurm. I used my a version of angsd i installed on conda (v. 0.933) because other versions of angsd don't work for this.
-To plot the admixture proportions per K, I used the [plotting script](05.ngsadmix/ngsadmix.R) locally in R:
+To plot the admixture proportions per K, I used the [ngsadmix plotting script](05.ngsadmix/ngsadmix.R) locally in R:
 
 ## F<sub>ST</sub> & IBD
 
@@ -91,7 +91,7 @@ I used the 2dSFS to calculate pairwise F<sub>ST</sub> between all populations. I
 
 Then i compiled the global weighted and unweighted FST values into one file using the [compiling script](08.fst/compile_FST_global_all.sh)
 
-I plotted the global F<sub>ST</sub> in Isolation by Distance models locally in R using the [plotting script](08.fst/fst.R)
+I plotted the global F<sub>ST</sub> in Isolation by Distance models locally in R using the [global fst plotting script](08.fst/fst.R)
 
 Then i moved on to per site F<sub>ST</sub> calculations: 
 ```bash
@@ -102,18 +102,20 @@ The per gene F<sub>ST</sub> were calculated using the custom script [loopFst.pl]
 ```bash
 perl loopFst.pl grasshopperRef.positions [pop1pop2].fst > genefst_[pop1pop2]
 ```
+I plotted the per gene fst using the [gene fest plotting script](08.fst/plot_gene_fst.R)
 
-### Heterozygosity
-Based on the per individual sfs, I first summed the output from each individual sfs into one `.ml` file, using the [summing script](09.hz/sum_indSFS.sh).
+## Heterozygosity
+Based on the per individual sfs, I summed the output from each individual sfs into one `.ml` file, using the [summing script](09.hz/sum_indSFS.sh).
 
-I plotted locally in R using the [plotting script](09.hz/hz.R).
+I plotted locally in R using the [hz plotting script](09.hz/hz.R).
 
-## theta, dxy, taj. D (per region & per pop)
-use correct filter (da fonseca)
-pi theta, etc >100 sites per gene (2dsfs) angsd 
+## Pi, Theta, Tajima's D (per region & per pop)
+I calculated per site Watterson's theta, Tajima's D, and pi based on the 1DSFS using realSFS in angsd. I used the [site theta script](10.pi_theta_taj/site_thetas_all.sh) to calculate per site stats, then the [log theta script](10.pi_theta_taj/logthetas_all.sh) to extract the relevant output and then summed the sites into genes using the [gene thetas script](10.pi_theta_taj/gene_thetas.R) in R on the server by submitting it with the [gene theta bash script](10.pi_theta_taj/gene_thetas.sh). 
 
-## Clines (1 SNP/region)
-make allele frequency file with relevant pops.. 
+The output file contains many correlated summary stats. I extracted the relevant ones and plotted locally in R using my [sumstat plotting script](10.pi_theta_taj/plot_gene_theta.R).
+
+## Geographic Clines 
+I made allele frequency files using 
 
 inbreeding cooefficint density ?
 capturing introns
